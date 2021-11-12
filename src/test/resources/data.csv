@@ -1,0 +1,4 @@
+productId,value,mockReturn,expected
+1,10000,10,1000
+2,20000,0,0
+3,40000,100,400
