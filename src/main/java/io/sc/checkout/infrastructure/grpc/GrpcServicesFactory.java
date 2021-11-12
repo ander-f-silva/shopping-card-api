@@ -7,7 +7,7 @@ import io.micronaut.grpc.annotation.GrpcChannel;
 import jakarta.inject.Singleton;
 
 @Factory
-public class GrpcServicesFactory {
+class GrpcServicesFactory {
 
     @Singleton
     DiscountGrpc.DiscountStub discountStub(@GrpcChannel("discount") ManagedChannel channel) {

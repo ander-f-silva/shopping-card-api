@@ -6,8 +6,6 @@ import discount.DiscountOuterClass;
 import io.grpc.stub.StreamObserver;
 import jakarta.inject.Singleton;
 
-import java.util.Objects;
-
 //TODO: Add logger to debug
 @Singleton
 class GettingProductDiscount implements GetProductDiscount {
@@ -20,10 +18,6 @@ class GettingProductDiscount implements GetProductDiscount {
     }
 
     public Float getPercent(Integer productId) {
-        if (Objects.isNull(productId)) {
-            throw new IllegalArgumentException("The field productId is null");
-        }
-
         var request = DiscountOuterClass.
                 GetDiscountRequest
                 .newBuilder()
