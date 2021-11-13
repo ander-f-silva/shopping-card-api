@@ -4,11 +4,8 @@
 - [API Reference](https://docs.micronaut.io/3.1.3/api/index.html)
 - [Configuration Reference](https://docs.micronaut.io/3.1.3/guide/configurationreference.html)
 - [Micronaut Guides](https://guides.micronaut.io/index.html)
+
 ---
-
-## Feature reactor documentation
-
-- [Micronaut Reactor documentation](https://micronaut-projects.github.io/micronaut-reactor/snapshot/guide/index.html)
 
 ## Feature http-client documentation
 
