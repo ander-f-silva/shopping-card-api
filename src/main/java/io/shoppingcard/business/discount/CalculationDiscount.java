@@ -1,4 +1,4 @@
-package io.sc.checkout.business;
+package io.shoppingcard.business.discount;
 
 import jakarta.inject.Singleton;
 

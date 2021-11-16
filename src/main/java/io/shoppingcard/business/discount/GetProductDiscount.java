@@ -1,4 +1,4 @@
-package io.sc.checkout.business;
+package io.shoppingcard.business.discount;
 
 public interface GetProductDiscount {
     Float getPercent(Integer productId);

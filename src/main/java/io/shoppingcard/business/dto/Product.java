@@ -1,4 +1,4 @@
-package io.sc.checkout.business.dto;
+package io.shoppingcard.business.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

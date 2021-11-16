@@ -1,10 +1,10 @@
-package io.sc.checkout.infrastructure.database;
+package io.shoppingcard.infrastructure.database;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.context.annotation.Factory;
-import io.sc.checkout.business.dto.Product;
+import io.shoppingcard.business.dto.Product;
 import jakarta.inject.Singleton;
 
 import java.io.BufferedReader;

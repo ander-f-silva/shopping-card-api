@@ -1,4 +1,4 @@
-package io.sc.checkout.business;
+package io.shoppingcard.business.discount;
 
 public interface CalculateDiscount {
     Float apply(Integer productId, Float value);

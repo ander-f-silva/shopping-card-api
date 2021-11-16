@@ -1,4 +1,4 @@
-package io.sc.checkout.business;
+package io.shoppingcard.business.discount;
 
 import io.micronaut.test.annotation.MockBean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
