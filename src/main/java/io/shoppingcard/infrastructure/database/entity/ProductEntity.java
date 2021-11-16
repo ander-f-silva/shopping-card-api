@@ -1,8 +1,8 @@
-package io.shoppingcard.business.dto;
+package io.shoppingcard.infrastructure.database.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Product {
+public class ProductEntity {
     private Long id;
     private String title;
     private String description;
