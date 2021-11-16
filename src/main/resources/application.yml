@@ -5,6 +5,6 @@ micronaut:
 grpc:
   channels:
     discount:
-      address: "http://localhost:50051"
+      address: "http://localhost:50051" ##TODO: Add en environment variable
       plaintext: true
       max-retry-attempts: 10
