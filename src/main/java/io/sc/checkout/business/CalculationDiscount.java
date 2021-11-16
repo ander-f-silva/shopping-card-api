@@ -4,7 +4,7 @@ import jakarta.inject.Singleton;
 
 //TODO: Add logger to debug
 @Singleton
-class CalculationDiscount {
+class CalculationDiscount implements CalculateDiscount {
     private static final Float DISCOUNT_ZERO = 0F;
 
     private GetProductDiscount getProductDiscount;
