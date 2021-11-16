@@ -14,14 +14,14 @@ import static org.mockito.Mockito.*;
 
 @MicronautTest
 class CalculationDiscountTest {
-    private CalculationDiscount calculationDiscount;
+    private CalculateDiscount calculateDiscount;
 
     @Inject
     private GetProductDiscount getProductDiscount;
 
     @BeforeEach
     void setUpAll() {
-        calculationDiscount = new CalculationDiscount(getProductDiscount);
+        calculateDiscount = new CalculationDiscount(getProductDiscount);
     }
 
     @ParameterizedTest
@@ -30,7 +30,7 @@ class CalculationDiscountTest {
     void testCalculateDiscount(Integer productId, Float value, Float mockReturn, Float expected) {
         when(getProductDiscount.getPercent(anyInt())).thenReturn(mockReturn);
 
-        var result = calculationDiscount.apply(productId, value);
+        var result = calculateDiscount.apply(productId, value);
 
         verify(getProductDiscount, times(1)).getPercent(anyInt());
 
