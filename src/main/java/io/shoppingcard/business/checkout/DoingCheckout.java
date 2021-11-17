@@ -1,6 +1,7 @@
 package io.shoppingcard.business.checkout;
 
 import io.shoppingcard.business.discount.CalculateDiscount;
+import io.shoppingcard.business.dto.BlackFridayEvent;
 import io.shoppingcard.business.dto.Product;
 import io.shoppingcard.business.dto.ProductsAggregate;
 import io.shoppingcard.infrastructure.database.repository.ProductRepository;
@@ -17,11 +18,17 @@ public class DoingCheckout implements DoCheckout {
 
     private CalculateDiscount calculateDiscount;
 
+    private BlackFridayEvent blackFridayEvent;
+
     public ProductsAggregate apply(final List<Product> products) {
         var productsComplete = products
                 .stream()
                 .map(this::completeDataOfCheckoutToProduct)
                 .collect(Collectors.toList());
+
+        if (blackFridayEvent.isNow()) {
+            productsComplete.add(getPromotionalProduct());
+        }
 
         var totalAmount = productsComplete.stream().mapToLong(Product::getTotalAmount).sum();
 
@@ -32,8 +39,24 @@ public class DoingCheckout implements DoCheckout {
         return new ProductsAggregate(totalAmount, totalAmountWithDiscount, totalDiscount, productsComplete);
     }
 
+    private Product getPromotionalProduct() {
+        return productRepository.findByIsGif(true)
+                .stream()
+                .map(productEntity -> Product
+                        .builder()
+                        .id(productEntity.getId())
+                        .quantity(1)
+                        .unitAmount(0L)
+                        .totalAmount(0L)
+                        .discount(0L)
+                        .isGift(productEntity.getIsGift())
+                        .build())
+                .findFirst()
+                .get();
+    }
+
     private Product completeDataOfCheckoutToProduct(Product product) {
-        var productEntity = productRepository.findById(product.getId());
+        var productEntity = productRepository.findByIdAndIsGift(product.getId(), false);
 
         return Product
                 .builder()

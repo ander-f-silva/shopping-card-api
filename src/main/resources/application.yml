@@ -8,3 +8,6 @@ grpc:
       address: "http://localhost:50051" ##TODO: Add en environment variable
       plaintext: true
       max-retry-attempts: 10
+
+
+dateBlackFriday: "2022-11-25"
