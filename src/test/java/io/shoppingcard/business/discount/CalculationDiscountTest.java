@@ -14,15 +14,11 @@ import static org.mockito.Mockito.*;
 
 @MicronautTest
 class CalculationDiscountTest {
+    @Inject
     private CalculateDiscount calculateDiscount;
 
     @Inject
     private GetProductDiscount getProductDiscount;
-
-    @BeforeEach
-    void setUpAll() {
-        calculateDiscount = new CalculationDiscount(getProductDiscount);
-    }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
