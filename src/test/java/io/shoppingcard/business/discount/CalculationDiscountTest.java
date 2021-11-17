@@ -27,12 +27,12 @@ class CalculationDiscountTest {
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
     @DisplayName("should calculate the product with discount")
-    void testCalculateDiscount(Integer productId, Float value, Float mockReturn, Float expected) {
-        when(getProductDiscount.getPercent(anyInt())).thenReturn(mockReturn);
+    void testCalculateDiscount(Long productId, Long value, Float mockReturn, Float expected) {
+        when(getProductDiscount.getPercent(anyLong())).thenReturn(mockReturn);
 
         var result = calculateDiscount.apply(productId, value);
 
-        verify(getProductDiscount, times(1)).getPercent(anyInt());
+        verify(getProductDiscount, times(1)).getPercent(anyLong());
 
         assertEquals(expected, result);
     }

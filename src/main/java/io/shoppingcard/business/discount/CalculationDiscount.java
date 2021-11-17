@@ -11,7 +11,7 @@ class CalculationDiscount implements CalculateDiscount {
 
     private GetProductDiscount getProductDiscount;
 
-    public Float apply(Integer productId, Float value) {
+    public Float apply(Long productId, Long value) {
         var discountPercent = getProductDiscount.getPercent(productId);
 
         if (discountPercent.equals(DISCOUNT_ZERO))
