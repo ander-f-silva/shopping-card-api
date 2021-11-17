@@ -1,17 +1,15 @@
 package io.shoppingcard.business.discount;
 
 import jakarta.inject.Singleton;
+import lombok.AllArgsConstructor;
 
 //TODO: Add logger to debug
 @Singleton
+@AllArgsConstructor
 class CalculationDiscount implements CalculateDiscount {
     private static final Float DISCOUNT_ZERO = 0F;
 
     private GetProductDiscount getProductDiscount;
-
-    public CalculationDiscount(GetProductDiscount getProductDiscount) {
-        this.getProductDiscount = getProductDiscount;
-    }
 
     public Float apply(Integer productId, Float value) {
         var discountPercent = getProductDiscount.getPercent(productId);

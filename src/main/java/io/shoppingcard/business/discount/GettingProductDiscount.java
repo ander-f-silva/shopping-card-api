@@ -5,6 +5,7 @@ import discount.DiscountGrpc;
 import discount.DiscountOuterClass;
 import io.grpc.stub.StreamObserver;
 import jakarta.inject.Singleton;
+import lombok.AllArgsConstructor;
 
 //TODO: Add logger to debug
 @Singleton
