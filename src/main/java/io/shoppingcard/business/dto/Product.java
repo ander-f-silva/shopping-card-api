@@ -13,6 +13,6 @@ public class Product {
     private Integer quantity;
     private Long unitAmount;
     private Long totalAmount;
-    private Number discount;
+    private Long discount;
     private Boolean isGift;
 }

@@ -17,6 +17,6 @@ class CalculationDiscount implements CalculateDiscount {
         if (discountPercent.equals(DISCOUNT_ZERO))
             return DISCOUNT_ZERO;
 
-        return value / discountPercent;
+        return value * discountPercent;
     }
 }

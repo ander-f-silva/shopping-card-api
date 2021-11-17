@@ -20,15 +20,24 @@ class ProductMemoryRepositoryTest {
                 .builder()
                 .id(1L)
                 .amount(100L)
+                .isGift(false)
                 .build();
 
         var secondProduct = ProductEntity
                 .builder()
                 .id(2L)
                 .amount(200L)
+                .isGift(false)
                 .build();
 
-        var mockProducts = Arrays.asList(firstProduct, secondProduct);
+        var thirdProduct = ProductEntity
+                .builder()
+                .id(3L)
+                .amount(0L)
+                .isGift(true)
+                .build();
+
+        var mockProducts = Arrays.asList(firstProduct, secondProduct, thirdProduct);
 
         productRepository = new ProductMemoryRepository(mockProducts);
     }
@@ -36,12 +45,13 @@ class ProductMemoryRepositoryTest {
     @Test
     @DisplayName("should find the product with success")
     void testFindTheProductWithSuccess() {
-        var answer = productRepository.findById(2L);
+        var answer = productRepository.findByIdAndIsGift(2L, false);
 
         var expected = ProductEntity
                 .builder()
                 .id(2L)
                 .amount(200L)
+                .isGift(false)
                 .build();
 
         assertEquals(expected, answer);
@@ -51,11 +61,28 @@ class ProductMemoryRepositoryTest {
     @DisplayName("should fail find the product when the not found")
     void testFindTheProductNotFound() {
         NoSuchElementException exception = assertThrows(NoSuchElementException.class, () -> {
-            productRepository.findById(3L);
+            productRepository.findByIdAndIsGift(3L, false);
         });
 
         var expectedMessage = "The product not exist";
 
         assertEquals(expectedMessage, exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("should find the promotional product")
+    void testFindThePromotionalProduct() {
+        var answer = productRepository.findByIsGif( true);
+
+        var productEntity = ProductEntity
+                .builder()
+                .id(3L)
+                .amount(0L)
+                .isGift(true)
+                .build();
+
+        var expected = Arrays.asList(productEntity);
+
+        assertEquals(expected, answer);
     }
 }

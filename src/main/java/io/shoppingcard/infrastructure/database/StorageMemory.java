@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Factory
-public class StorageMemory {
+class StorageMemory {
 
     @Singleton
     List<ProductEntity> products() throws IOException {
