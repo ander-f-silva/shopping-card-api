@@ -1,5 +1,5 @@
 applicationType: default
-defaultPackage: io.sc.checkout
+defaultPackage: io.shoppingcard
 testFramework: junit
 sourceLanguage: java
 buildTool: gradle

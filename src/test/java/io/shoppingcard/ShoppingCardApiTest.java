@@ -1,4 +1,4 @@
-package io.sc.checkout;
+package io.shoppingcard;
 
 import io.micronaut.runtime.EmbeddedApplication;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;

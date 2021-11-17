@@ -1,4 +1,4 @@
-package io.sc.checkout.business;
+package io.shoppingcard.business.discount;
 
 import io.micronaut.test.annotation.MockBean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -14,25 +14,21 @@ import static org.mockito.Mockito.*;
 
 @MicronautTest
 class CalculationDiscountTest {
-    private CalculationDiscount calculationDiscount;
+    @Inject
+    private CalculateDiscount calculateDiscount;
 
     @Inject
     private GetProductDiscount getProductDiscount;
 
-    @BeforeEach
-    void setUpAll() {
-        calculationDiscount = new CalculationDiscount(getProductDiscount);
-    }
-
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
     @DisplayName("should calculate the product with discount")
-    void testCalculateDiscount(Integer productId, Float value, Float mockReturn, Float expected) {
-        when(getProductDiscount.getPercent(anyInt())).thenReturn(mockReturn);
+    void testCalculateDiscount(Long productId, Long value, Float mockReturn, Float expected) {
+        when(getProductDiscount.getPercent(anyLong())).thenReturn(mockReturn);
 
-        var result = calculationDiscount.apply(productId, value);
+        var result = calculateDiscount.apply(productId, value);
 
-        verify(getProductDiscount, times(1)).getPercent(anyInt());
+        verify(getProductDiscount, times(1)).getPercent(anyLong());
 
         assertEquals(expected, result);
     }

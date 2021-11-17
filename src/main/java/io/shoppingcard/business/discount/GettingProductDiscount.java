@@ -1,10 +1,11 @@
-package io.sc.checkout.business;
+package io.shoppingcard.business.discount;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import discount.DiscountGrpc;
 import discount.DiscountOuterClass;
 import io.grpc.stub.StreamObserver;
 import jakarta.inject.Singleton;
+import lombok.AllArgsConstructor;
 
 //TODO: Add logger to debug
 @Singleton
@@ -17,11 +18,11 @@ class GettingProductDiscount implements GetProductDiscount {
         this.gRPCDiscountAsyncService = gRPCDiscountService;
     }
 
-    public Float getPercent(Integer productId) {
+    public Float getPercent(Long productId) {
         var request = DiscountOuterClass.
                 GetDiscountRequest
                 .newBuilder()
-                .setProductID(productId)
+                .setProductID(productId.intValue())
                 .build();
 
         gRPCDiscountAsyncService.getDiscount(request, getResponseObserver());

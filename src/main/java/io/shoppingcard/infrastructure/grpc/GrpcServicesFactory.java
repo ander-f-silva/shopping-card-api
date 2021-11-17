@@ -1,4 +1,4 @@
-package io.sc.checkout.infrastructure.grpc;
+package io.shoppingcard.infrastructure.grpc;
 
 import discount.DiscountGrpc;
 import io.grpc.ManagedChannel;
