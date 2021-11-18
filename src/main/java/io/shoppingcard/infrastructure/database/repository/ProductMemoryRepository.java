@@ -20,7 +20,7 @@ class ProductMemoryRepository implements ProductRepository {
         return products.stream()
                 .filter(productEntity -> productEntity.getId().equals(id) && productEntity.getIsGift().equals(isGift))
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("The product not exist"));
+                .orElseThrow(() -> new NoSuchElementException("The product_id " + id + " not exist"));
     }
 
     @Override

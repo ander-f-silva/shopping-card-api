@@ -10,8 +10,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
@@ -134,6 +136,26 @@ class DoingCheckoutTest {
         assertEquals(expectedTotalAmount, answer.getTotalAmount());
         assertEquals(expectedTotalDiscount, answer.getTotalDiscount());
         assertEquals(expectedTotalAmountWithDiscount, answer.getTotalAmountWithDiscount());
+    }
+
+    @Test
+    @DisplayName("should return NoSuchElementException to product not found")
+    void testReturnNoSuchElementExceptionToProductNotFound() {
+        var notFoundProduct = Product
+                .builder()
+                .id(9L)
+                .quantity(1)
+                .build();
+
+        var products = Arrays.asList(notFoundProduct);
+
+        NoSuchElementException exception = assertThrows(NoSuchElementException.class, () -> {
+            doCheckout.validateEntryOfProduct(products);
+        });
+
+        var expectedMessage = "The product_id 9 not exist";
+
+        assertEquals(expectedMessage, exception.getMessage());
     }
 
     @MockBean(GetProductDiscount.class)

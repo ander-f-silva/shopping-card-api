@@ -31,7 +31,7 @@ class CheckoutResource {
     private DoCheckout doCheckout;
 
     @Post
-    public Single<ProductsResponse> apply(@Body @Valid final ProductsRequest request) {
+    public Single<ProductsResponse> apply(@Body @Valid ProductsRequest request) {
         var products = mapperPayloadRequestToDto(request);
 
         doCheckout.validateEntryOfProduct(products);
@@ -89,7 +89,7 @@ class CheckoutResource {
         try {
             var requestJson = objectMapper.writeValueAsString(request);
             var responseJson = objectMapper.writeValueAsString(response);
-            logger.info("[event: do checkout][request: {}][response:{}]", requestJson, responseJson);
+            logger.info("[event: do checkout][request: {}][response:{}] Message: Checkout ready with success", requestJson, responseJson);
         } catch (JsonProcessingException jsonProcessingException) {
             logger.error("[event: do checkout][request: {}][response:{}]Message: Fail to generate the logger", request, response, jsonProcessingException);
         }

@@ -152,6 +152,35 @@ class CheckoutResourceTest {
         }
     }
 
+
+    @Test
+    @DisplayName("should fail when the product not found")
+    public void testValidateProductExist() throws Exception {
+        var requestJson = "{\n" +
+                "    \"products\": [\n" +
+                "        {\n" +
+                "            \"id\": 10,\n" +
+                "            \"quantity\": 1 \n" +
+                "        },\n" +
+                "         {\n" +
+                "            \"id\": 2,\n" +
+                "            \"quantity\": 2\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}";
+
+        var objectMapper = new ObjectMapper();
+
+        var body = objectMapper.readValue(requestJson, ProductsRequest.class);
+
+        try {
+            client.toBlocking().retrieve(HttpRequest.POST(PATH_CHECKOUT, body), ProductsResponse.class);
+        } catch (HttpClientResponseException httpClientResponseException) {
+            assertEquals(HttpStatus.UNPROCESSABLE_ENTITY, httpClientResponseException.getStatus());
+            assertEquals("Unprocessable Entity", httpClientResponseException.getMessage());
+        }
+    }
+
     @MockBean(BlackFridayEvent.class)
     BlackFridayEvent isBlackFriday() {
         return mock(BlackFridayEvent.class);

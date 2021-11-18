@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: shoppingCardApi
+
+grpc:
+  channels:
+    discount:
+      address: "http://localhost:50001"
+      plaintext: true
+      max-retry-attempts: 10
+
+dateBlackFriday: "2021-11-10"
+
+sourcePath: "/json/products.json"
