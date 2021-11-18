@@ -26,17 +26,19 @@ public class DoingCheckout implements DoCheckout {
                 .map(this::completeDataOfCheckoutToProduct)
                 .collect(Collectors.toList());
 
-        if (blackFridayEvent.isNow()) {
-            productsComplete.add(getPromotionalProduct());
-        }
+        addPromotionalProductInBlackFriday(productsComplete);
 
         var totalAmount = productsComplete.stream().mapToLong(Product::getTotalAmount).sum();
-
         var totalDiscount = productsComplete.stream().mapToLong(product -> product.getDiscount().longValue()).sum();
-
         var totalAmountWithDiscount = totalAmount - totalDiscount;
 
         return new ProductsAggregate(totalAmount, totalAmountWithDiscount, totalDiscount, productsComplete);
+    }
+
+    private void addPromotionalProductInBlackFriday(List<Product> productsComplete) {
+        if (blackFridayEvent.isNow()) {
+            productsComplete.add(getPromotionalProduct());
+        }
     }
 
     private Product getPromotionalProduct() {
