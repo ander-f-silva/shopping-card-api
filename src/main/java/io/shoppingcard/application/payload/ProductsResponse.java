@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @EqualsAndHashCode
+@ToString
 public class ProductsResponse {
     @JsonProperty("total_amount")
     private Long totalAmount;
@@ -26,6 +27,7 @@ public class ProductsResponse {
     @AllArgsConstructor
     @NoArgsConstructor
     @EqualsAndHashCode
+    @ToString
     public static class ProductResponse {
         private Long id;
         private Integer quantity;

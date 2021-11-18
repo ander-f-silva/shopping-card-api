@@ -10,3 +10,5 @@ grpc:
       max-retry-attempts: 10
 
 dateBlackFriday: ${DATE_BLACK_FRIDAY}
+
+sourcePath: "/json/products.json"
