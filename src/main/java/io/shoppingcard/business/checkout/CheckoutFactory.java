@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 @Factory
 class CheckoutFactory {
-    @Value("dateBlackFriday")
+    @Value("${dateBlackFriday}")
     private String dateBlackFriday;
 
     @Singleton

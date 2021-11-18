@@ -2,11 +2,9 @@ package io.shoppingcard.business.checkout;
 
 import io.micronaut.test.annotation.MockBean;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
-import io.shoppingcard.business.discount.CalculateDiscount;
 import io.shoppingcard.business.discount.GetProductDiscount;
 import io.shoppingcard.business.dto.BlackFridayEvent;
 import io.shoppingcard.business.dto.Product;
-import io.shoppingcard.infrastructure.database.repository.ProductRepository;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,13 +21,7 @@ class DoingCheckoutTest {
     private DoCheckout doCheckout;
 
     @Inject
-    private CalculateDiscount calculateDiscount;
-
-    @Inject
     private GetProductDiscount getProductDiscount;
-
-    @Inject
-    private ProductRepository productRepository;
 
     @Inject
     private BlackFridayEvent blackFridayEvent;
