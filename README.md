@@ -170,5 +170,5 @@ Para seguir os passos do desenvolvimento poder acessar as páginas com as PR cri
 
 Página: [Histórico Commit](https://github.com/ander-f-silva/shopping-card-api/pulls?q=is%3Apr+is%3Aclosed)
 
-Nota: Todos os commits estão assinandos por mim.
+Nota: Todos os commits estão assinandos por mim e a data do Black Friday esta na váriavel de ambiente DATE_BLACK_FRIDAY dentro do docker-composer, caso queira mudar fique avontade.
 
