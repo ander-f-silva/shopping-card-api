@@ -5,8 +5,8 @@ micronaut:
 grpc:
   channels:
     discount:
-      address: "http://localhost:50051" ##TODO: Add en environment variable
+      address: ${DISCOUNT_SERVICE_ENDPOINT}
       plaintext: true
       max-retry-attempts: 10
 
-dateBlackFriday: "2021-11-18" ##TODO: Add en environment variable
+dateBlackFriday: ${DATE_BLACK_FRIDAY}
