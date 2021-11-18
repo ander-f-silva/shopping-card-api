@@ -6,7 +6,7 @@ Desenvolvi uma solução construindo um endpoint de checkout para um fluxo de de
 
 Criei um Wiki para ilustrar os meus pensamentos e como planejei o projeto no link abaixo:
 
-``https://github.com/ander-f-silva/shopping-card-api/wiki/Wiki-da-aplica%C3%A7%C3%A3o``
+- [Wiki](https://github.com/ander-f-silva/shopping-card-api/wiki/Wiki-da-aplica%C3%A7%C3%A3o)
 
 ## Reflexão sobre o problema
 
@@ -168,7 +168,7 @@ Usei um Kaban que esta ilustrado na Wiki.
 
 Para seguir os passos do desenvolvimento poder acessar as páginas com as PR criadas na ordem de baixo para cima.
 
-Página: ``https://github.com/ander-f-silva/shopping-card-api/pulls?q=is%3Apr+is%3Aclosed``
+Página: [Histórico Commit](https://github.com/ander-f-silva/shopping-card-api/pulls?q=is%3Apr+is%3Aclosed)
 
 Nota: Todos os commits estão assinandos por mim.
 
