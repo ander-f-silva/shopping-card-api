@@ -21,7 +21,7 @@ class GettingProductDiscount implements GetProductDiscount {
         this.gRPCDiscountAsyncService = gRPCDiscountService;
     }
 
-    public Float getPercent(Long productId) {
+    public Float getPercent(final Long productId) {
         var request = DiscountOuterClass.
                 GetDiscountRequest
                 .newBuilder()

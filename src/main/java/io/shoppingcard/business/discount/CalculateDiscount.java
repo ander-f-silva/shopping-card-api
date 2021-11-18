@@ -2,5 +2,5 @@ package io.shoppingcard.business.discount;
 
 @FunctionalInterface
 public interface CalculateDiscount {
-    Float apply(Long productId, Long value);
+    Float apply(final Long productId, final Long value);
 }

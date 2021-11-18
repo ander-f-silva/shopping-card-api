@@ -20,6 +20,7 @@ public class DoingCheckout implements DoCheckout {
 
     private BlackFridayEvent blackFridayEvent;
 
+    @Override
     public ProductsAggregate apply(final List<Product> products) {
         var productsComplete = products
                 .stream()
@@ -33,6 +34,13 @@ public class DoingCheckout implements DoCheckout {
         var totalAmountWithDiscount = totalAmount - totalDiscount;
 
         return new ProductsAggregate(totalAmount, totalAmountWithDiscount, totalDiscount, productsComplete);
+    }
+
+    @Override
+    public void validateEntryOfProduct(final List<Product> products) {
+        for (Product product: products) {
+            productRepository.findByIdAndIsGift(product.getId(), false);
+        }
     }
 
     private void addPromotionalProductInBlackFriday(List<Product> productsComplete) {

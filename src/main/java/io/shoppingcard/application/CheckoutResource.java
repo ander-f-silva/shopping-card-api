@@ -31,10 +31,10 @@ class CheckoutResource {
     private DoCheckout doCheckout;
 
     @Post
-    public Single<ProductsResponse> apply(@Body @Valid ProductsRequest request) {
+    public Single<ProductsResponse> apply(@Body @Valid final ProductsRequest request) {
         var products = mapperPayloadRequestToDto(request);
 
-        //TODO:valida se o produto não existe
+        doCheckout.validateEntryOfProduct(products);
 
         var productsAggregate = doCheckout.apply(products);
 
