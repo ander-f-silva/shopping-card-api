@@ -64,7 +64,7 @@ class ProductMemoryRepositoryTest {
             productRepository.findByIdAndIsGift(3L, false);
         });
 
-        var expectedMessage = "The product not exist";
+        var expectedMessage = "The product_id 3 not exist";
 
         assertEquals(expectedMessage, exception.getMessage());
     }

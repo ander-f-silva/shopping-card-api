@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  discount-service:
+    image: "hashorg/hash-mock-discount-service"
+    restart: always
+    container_name: hash-mock-discount-service
+    ports:
+      - "50051:50051"
+    networks:
+      - local-network
+
+  app-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image:
+      shopping-card-app:latest
+    container_name: shopping-card-app
+    environment:
+      DATE_BLACK_FRIDAY: "2021-11-17"
+      DISCOUNT_SERVICE_ENDPOINT: "http://discount-service:50051"
+    ports:
+      - "8080:8080"
+    networks:
+      - local-network
+
+networks:
+  local-network:
+    driver: bridge

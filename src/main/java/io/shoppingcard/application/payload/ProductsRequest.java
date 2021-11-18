@@ -4,6 +4,7 @@ import io.micronaut.core.annotation.Introspected;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Introspected
+@ToString
 public class ProductsRequest {
     @NotNull
     @Valid
@@ -22,6 +24,7 @@ public class ProductsRequest {
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
+    @ToString
     @Introspected
     public static class ProductRequest {
         @NotNull

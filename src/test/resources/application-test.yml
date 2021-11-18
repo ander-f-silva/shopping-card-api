@@ -5,10 +5,10 @@ micronaut:
 grpc:
   channels:
     discount:
-      address: ${DISCOUNT_SERVICE_ENDPOINT}
+      address: "http://localhost:50001"
       plaintext: true
       max-retry-attempts: 10
 
-dateBlackFriday: ${DATE_BLACK_FRIDAY}
+dateBlackFriday: "2021-11-10"
 
 sourcePath: "/json/products.json"

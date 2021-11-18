@@ -6,10 +6,13 @@ import discount.DiscountOuterClass;
 import io.grpc.stub.StreamObserver;
 import jakarta.inject.Singleton;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-//TODO: Add logger to debug
 @Singleton
 class GettingProductDiscount implements GetProductDiscount {
+    private static final Logger logger = LoggerFactory.getLogger(GettingProductDiscount.class);
+
     private DiscountGrpc.DiscountStub gRPCDiscountAsyncService;
 
     private AtomicDouble discount = new AtomicDouble(0);
@@ -18,7 +21,7 @@ class GettingProductDiscount implements GetProductDiscount {
         this.gRPCDiscountAsyncService = gRPCDiscountService;
     }
 
-    public Float getPercent(Long productId) {
+    public Float getPercent(final Long productId) {
         var request = DiscountOuterClass.
                 GetDiscountRequest
                 .newBuilder()
@@ -39,11 +42,13 @@ class GettingProductDiscount implements GetProductDiscount {
 
             @Override
             public void onError(Throwable t) {
+                logger.warn("[event: get result discount] Message: The discount system is out of order");
                 discount.set(0);
             }
 
             @Override
             public void onCompleted() {
+                logger.info("[event: get result discount] Message: The discount system is OK");
             }
         };
     }
